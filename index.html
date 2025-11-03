@@ -1,0 +1,3053 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="One Touch - Tecnología Premium al mejor precio en Bolivia. Smartphones, laptops, audio y más con envío gratis."
+    />
+    <title>One Touch | Tecnología Premium en Bolivia</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+        line-height: 1.6;
+        color: #ffffff;
+        background-color: #000000;
+        overflow-x: hidden;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+      }
+
+      /* Header con animación de aparición suave */
+      header {
+        background-color: rgba(0, 0, 0, 0.95);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid #d4af37;
+        padding: 0;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        transition: all 0.3s ease;
+        animation: slideDownHeader 0.8s ease-out;
+      }
+
+      @keyframes slideDownHeader {
+        from {
+          transform: translateY(-100%);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      header.scrolled {
+        background-color: rgba(0, 0, 0, 0.98);
+        box-shadow: 0 4px 20px rgba(212, 175, 55, 0.1);
+      }
+
+      .header-top {
+        background-color: #1a1a1a;
+        border-bottom: 1px solid #333;
+        padding: 0.5rem 0;
+      }
+
+      .header-top-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.85rem;
+      }
+
+      .header-contact {
+        display: flex;
+        gap: 2rem;
+      }
+
+      .header-contact a {
+        color: #d4af37;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      .header-contact a::before {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: #d4af37;
+        transition: width 0.3s ease;
+      }
+
+      .header-contact a:hover::before {
+        width: 100%;
+      }
+
+      .header-contact a:hover {
+        transform: translateY(-2px);
+      }
+
+      .header-shipping {
+        color: #ccc;
+        animation: slideInRight 1s ease-out;
+      }
+
+      @keyframes slideInRight {
+        from {
+          transform: translateX(50px);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      .header-main {
+        padding: 1rem 0;
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #d4af37;
+        letter-spacing: 2px;
+        animation: glowPulse 3s ease-in-out infinite;
+        cursor: pointer;
+      }
+
+      @keyframes glowPulse {
+        0%,
+        100% {
+          text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+        50% {
+          text-shadow: 0 0 20px rgba(212, 175, 55, 0.8),
+            0 0 30px rgba(212, 175, 55, 0.4);
+        }
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 2.5rem;
+      }
+
+      .nav-links a {
+        color: #ffffff;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 0.95rem;
+        position: relative;
+        transition: color 0.3s ease;
+        cursor: pointer;
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: #d4af37;
+        transition: width 0.3s ease;
+      }
+
+      .nav-links a:hover,
+      .nav-links a.active {
+        color: #d4af37;
+      }
+
+      .nav-links a:hover::after,
+      .nav-links a.active::after {
+        width: 100%;
+      }
+
+      .nav-actions {
+        display: flex;
+        gap: 1.5rem;
+        align-items: center;
+      }
+
+      .whatsapp-float {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        cursor: pointer;
+        z-index: 999;
+        box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+        transition: all 0.3s ease;
+        animation: pulse 2s ease-in-out infinite;
+      }
+
+      .whatsapp-float:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+      }
+
+      /* Hero con partículas animadas */
+      .hero {
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+          #1a1a1a;
+        padding: 140px 0 80px;
+        text-align: center;
+        margin-top: 100px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(
+          circle at 50% 50%,
+          rgba(212, 175, 55, 0.05) 0%,
+          transparent 70%
+        );
+        animation: pulseHero 4s ease-in-out infinite;
+      }
+
+      @keyframes pulseHero {
+        0%,
+        100% {
+          opacity: 0.5;
+        }
+        50% {
+          opacity: 1;
+        }
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-image: radial-gradient(
+            circle,
+            rgba(212, 175, 55, 0.1) 1px,
+            transparent 1px
+          ),
+          radial-gradient(circle, rgba(212, 175, 55, 0.15) 1px, transparent 1px);
+        background-size: 50px 50px, 80px 80px;
+        background-position: 0 0, 40px 40px;
+        animation: floatParticles 20s linear infinite;
+      }
+
+      @keyframes floatParticles {
+        0% {
+          transform: translateY(0);
+        }
+        100% {
+          transform: translateY(-100px);
+        }
+      }
+
+      .hero-content h1 {
+        font-size: 3.5rem;
+        margin-bottom: 1rem;
+        color: #d4af37;
+        font-weight: 700;
+        letter-spacing: 3px;
+        animation: fadeInUp 1s ease, textGlow 2s ease-in-out infinite alternate;
+        position: relative;
+        z-index: 1;
+      }
+
+      @keyframes textGlow {
+        from {
+          text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+        }
+        to {
+          text-shadow: 0 0 40px rgba(212, 175, 55, 0.8),
+            0 0 60px rgba(212, 175, 55, 0.4);
+        }
+      }
+
+      .hero-content .subtitle {
+        font-size: 1.4rem;
+        color: #ccc;
+        margin-bottom: 2rem;
+        font-weight: 300;
+        animation: fadeInUp 1s ease 0.2s backwards;
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Hero Badge Top */
+      .hero-badge-top {
+        background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+        color: #000000;
+        padding: 0.6rem 1.5rem;
+        display: inline-block;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        margin-bottom: 1.5rem;
+        border-radius: 50px;
+        box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+        animation: fadeInDown 0.8s ease, floatBadge 3s ease-in-out infinite;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-badge-top::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.6),
+          transparent
+        );
+        animation: shimmerBadge 2s infinite;
+      }
+
+      @keyframes fadeInDown {
+        from {
+          opacity: 0;
+          transform: translateY(-50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes floatBadge {
+        0%,
+        100% {
+          transform: translateY(0) scale(1);
+        }
+        50% {
+          transform: translateY(-8px) scale(1.02);
+        }
+      }
+
+      @keyframes shimmerBadge {
+        0% {
+          left: -100%;
+        }
+        100% {
+          left: 200%;
+        }
+      }
+
+      /* Animación de palabras en el título */
+      .word-animate {
+        display: inline-block;
+        opacity: 0;
+        animation: wordReveal 0.8s ease forwards;
+        animation-delay: var(--delay);
+        transform-origin: center;
+      }
+
+      @keyframes wordReveal {
+        0% {
+          opacity: 0;
+          transform: translateY(50px) rotateX(-90deg);
+          filter: blur(10px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0) rotateX(0);
+          filter: blur(0);
+        }
+      }
+
+      /* Animación del subtítulo */
+      .subtitle-word {
+        display: inline-block;
+        opacity: 0;
+        animation: subtitleFade 0.6s ease forwards;
+        animation-delay: var(--delay);
+        margin: 0 0.2rem;
+      }
+
+      @keyframes subtitleFade {
+        0% {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Botones CTA del Hero */
+      .hero-cta-buttons {
+        display: flex;
+        gap: 1.5rem;
+        justify-content: center;
+        margin: 2.5rem 0;
+        opacity: 0;
+        animation: fadeInUp 0.8s ease 1.2s forwards;
+      }
+
+      .btn-hero-primary,
+      .btn-hero-secondary {
+        padding: 1rem 2.5rem;
+        font-size: 1rem;
+        font-weight: 700;
+        text-decoration: none;
+        border-radius: 50px;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.8rem;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        position: relative;
+        overflow: hidden;
+        letter-spacing: 1px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      .btn-hero-primary {
+        background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+        color: #000000;
+        border: 2px solid transparent;
+      }
+
+      .btn-hero-primary::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.4),
+          transparent
+        );
+        transition: left 0.6s ease;
+      }
+
+      .btn-hero-primary:hover::before {
+        left: 100%;
+      }
+
+      .btn-hero-primary:hover {
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 8px 30px rgba(212, 175, 55, 0.6);
+      }
+
+      .btn-arrow {
+        display: inline-block;
+        transition: transform 0.3s ease;
+      }
+
+      .btn-hero-primary:hover .btn-arrow {
+        transform: translateX(8px);
+        animation: arrowBounce 0.6s ease infinite;
+      }
+
+      @keyframes arrowBounce {
+        0%,
+        100% {
+          transform: translateX(8px);
+        }
+        50% {
+          transform: translateX(15px);
+        }
+      }
+
+      .btn-hero-secondary {
+        background: transparent;
+        color: #d4af37;
+        border: 2px solid #d4af37;
+        position: relative;
+      }
+
+      .btn-hero-secondary::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 100%;
+        background: #d4af37;
+        transition: width 0.4s ease;
+        z-index: -1;
+      }
+
+      .btn-hero-secondary:hover {
+        color: #000000;
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 8px 30px rgba(212, 175, 55, 0.4);
+      }
+
+      .btn-hero-secondary:hover::before {
+        width: 100%;
+      }
+
+      /* Iconos en las estadísticas */
+      .stat-icon {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+        display: block;
+        animation: iconRotate 4s ease-in-out infinite;
+        filter: drop-shadow(0 4px 8px rgba(212, 175, 55, 0.3));
+      }
+
+      @keyframes iconRotate {
+        0%,
+        100% {
+          transform: rotate(0deg) scale(1);
+        }
+        25% {
+          transform: rotate(-10deg) scale(1.1);
+        }
+        75% {
+          transform: rotate(10deg) scale(1.1);
+        }
+      }
+
+      .stat-item:hover .stat-icon {
+        animation: iconBounceRotate 0.6s ease;
+        filter: drop-shadow(0 8px 16px rgba(212, 175, 55, 0.6));
+      }
+
+      @keyframes iconBounceRotate {
+        0%,
+        100% {
+          transform: rotate(0deg) scale(1);
+        }
+        25% {
+          transform: rotate(-15deg) scale(1.3);
+        }
+        50% {
+          transform: rotate(0deg) scale(0.9);
+        }
+        75% {
+          transform: rotate(15deg) scale(1.3);
+        }
+      }
+
+      /* Barra de progreso en estadísticas */
+      .stat-progress {
+        width: 100%;
+        height: 3px;
+        background: rgba(212, 175, 55, 0.2);
+        margin-top: 1rem;
+        border-radius: 10px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .stat-progress::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 100%;
+        background: linear-gradient(90deg, #d4af37, #f4d03f, #d4af37);
+        animation: progressFill 2s ease-out forwards;
+        box-shadow: 0 0 10px #d4af37;
+      }
+
+      @keyframes progressFill {
+        0% {
+          width: 0;
+        }
+        100% {
+          width: 100%;
+        }
+      }
+
+      .stat-item:nth-child(2) .stat-progress::before {
+        animation-delay: 0.3s;
+      }
+
+      .stat-item:nth-child(3) .stat-progress::before {
+        animation-delay: 0.6s;
+      }
+
+      /* Efecto de partículas mejorado */
+      .hero::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-image: radial-gradient(
+            circle,
+            rgba(212, 175, 55, 0.15) 2px,
+            transparent 2px
+          ),
+          radial-gradient(circle, rgba(212, 175, 55, 0.1) 1px, transparent 1px),
+          radial-gradient(circle, rgba(212, 175, 55, 0.2) 1px, transparent 1px);
+        background-size: 80px 80px, 120px 120px, 50px 50px;
+        background-position: 0 0, 40px 40px, 80px 20px;
+        animation: floatParticlesEnhanced 25s linear infinite;
+        pointer-events: none;
+      }
+
+      @keyframes floatParticlesEnhanced {
+        0% {
+          transform: translateY(0) translateX(0);
+        }
+        100% {
+          transform: translateY(-120px) translateX(30px);
+        }
+      }
+
+      /* Efecto de ondas en el fondo */
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(
+            ellipse at 20% 30%,
+            rgba(212, 175, 55, 0.08) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            ellipse at 80% 70%,
+            rgba(212, 175, 55, 0.06) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            ellipse at 50% 50%,
+            rgba(212, 175, 55, 0.04) 0%,
+            transparent 70%
+          );
+        animation: wavesPulse 8s ease-in-out infinite;
+      }
+
+      @keyframes wavesPulse {
+        0%,
+        100% {
+          opacity: 0.3;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.6;
+          transform: scale(1.1);
+        }
+      }
+
+      /* Responsive para botones */
+      @media (max-width: 768px) {
+        .hero-cta-buttons {
+          flex-direction: column;
+          gap: 1rem;
+        }
+
+        .btn-hero-primary,
+        .btn-hero-secondary {
+          width: 100%;
+          justify-content: center;
+        }
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .hero-stats {
+        display: flex;
+        justify-content: center;
+        gap: 4rem;
+        margin-top: 2rem;
+      }
+
+      .stat-item {
+        text-align: center;
+        animation: fadeInUp 1s ease 0.4s backwards,
+          float 3s ease-in-out infinite;
+        position: relative;
+        z-index: 1;
+      }
+
+      .stat-item:nth-child(2) {
+        animation-delay: 0.6s, 3.5s;
+      }
+
+      .stat-item:nth-child(3) {
+        animation-delay: 0.8s, 4s;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      .stat-number {
+        font-size: 2rem;
+        color: #d4af37;
+        font-weight: 700;
+        display: block;
+        transition: transform 0.3s ease;
+      }
+
+      .stat-item:hover .stat-number {
+        transform: scale(1.2);
+        animation: bounce 0.5s ease;
+      }
+
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: scale(1.2) translateY(0);
+        }
+        50% {
+          transform: scale(1.2) translateY(-10px);
+        }
+      }
+
+      .stat-label {
+        font-size: 0.9rem;
+        color: #999;
+      }
+
+      /* Alert Banner */
+      .alert-banner {
+        background-color: #d4af37;
+        color: #000000;
+        text-align: center;
+        padding: 0.8rem;
+        font-weight: 600;
+        animation: slideDown 0.5s ease, colorShift 4s ease-in-out infinite;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .alert-banner::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.3),
+          transparent
+        );
+        animation: shimmerAlert 3s infinite;
+      }
+
+      @keyframes shimmerAlert {
+        0% {
+          left: -100%;
+        }
+        100% {
+          left: 200%;
+        }
+      }
+
+      @keyframes colorShift {
+        0%,
+        100% {
+          background-color: #d4af37;
+        }
+        50% {
+          background-color: #b8941f;
+        }
+      }
+
+      @keyframes slideDown {
+        from {
+          transform: translateY(-100%);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      /* Promociones */
+      .promociones {
+        background-color: #0a0a0a;
+        padding: 80px 0;
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .section-badge {
+        background-color: #d4af37;
+        color: #000000;
+        padding: 0.4rem 1.2rem;
+        display: inline-block;
+        font-size: 0.85rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+        margin-bottom: 1rem;
+        opacity: 0;
+        animation: fadeIn 0.8s ease forwards, wiggle 2s ease-in-out infinite;
+      }
+
+      @keyframes wiggle {
+        0%,
+        100% {
+          transform: rotate(-2deg);
+        }
+        50% {
+          transform: rotate(2deg);
+        }
+      }
+
+      @keyframes fadeIn {
+        to {
+          opacity: 1;
+        }
+      }
+
+      .section-title {
+        font-size: 2.8rem;
+        margin-bottom: 0.5rem;
+        color: #d4af37;
+        font-weight: 700;
+        opacity: 0;
+        animation: fadeInUp 0.8s ease 0.2s forwards;
+      }
+
+      .section-subtitle {
+        font-size: 1.1rem;
+        color: #999;
+        font-weight: 300;
+        opacity: 0;
+        animation: fadeInUp 0.8s ease 0.4s forwards;
+      }
+
+      .promo-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        margin-bottom: 3rem;
+      }
+
+      .promo-card {
+        background-color: #000000;
+        border: 2px solid #222;
+        padding: 0;
+        overflow: hidden;
+        transition: all 0.4s ease;
+        opacity: 0;
+        animation: fadeInUp 0.6s ease forwards;
+        transform-style: preserve-3d;
+        perspective: 1000px;
+      }
+
+      .promo-card:nth-child(1) {
+        animation-delay: 0.2s;
+      }
+      .promo-card:nth-child(2) {
+        animation-delay: 0.4s;
+      }
+      .promo-card:nth-child(3) {
+        animation-delay: 0.6s;
+      }
+
+      .promo-card:hover {
+        transform: translateY(-15px) rotateX(5deg) rotateY(5deg) scale(1.02);
+        border-color: #d4af37;
+        box-shadow: 0 20px 60px rgba(212, 175, 55, 0.3);
+      }
+
+      .promo-header {
+        background-color: #d4af37;
+        color: #000000;
+        padding: 1rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .promo-header::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(
+          45deg,
+          transparent,
+          rgba(255, 255, 255, 0.3),
+          transparent
+        );
+        transform: rotate(45deg);
+        animation: sweepShine 3s infinite;
+      }
+
+      @keyframes sweepShine {
+        0% {
+          transform: translateX(-100%) rotate(45deg);
+        }
+        100% {
+          transform: translateX(100%) rotate(45deg);
+        }
+      }
+
+      .promo-badge {
+        font-weight: 700;
+        font-size: 1.1rem;
+        letter-spacing: 1px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .promo-body {
+        padding: 2rem;
+        text-align: center;
+      }
+
+      .promo-body h3 {
+        font-size: 1.6rem;
+        margin-bottom: 1.5rem;
+        color: #ffffff;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+
+      .promo-card:hover .promo-body h3 {
+        color: #d4af37;
+        transform: scale(1.05);
+      }
+
+      .promo-features {
+        text-align: left;
+        margin-bottom: 2rem;
+      }
+
+      .promo-features li {
+        list-style: none;
+        padding: 0.5rem 0;
+        color: #ccc;
+        border-bottom: 1px solid #222;
+        transition: all 0.3s ease;
+        transform: translateX(0);
+      }
+
+      .promo-card:hover .promo-features li {
+        transform: translateX(10px);
+        color: #fff;
+      }
+
+      .promo-features li:last-child {
+        border-bottom: none;
+      }
+
+      .feature-check {
+        color: #d4af37;
+        margin-right: 0.5rem;
+        display: inline-block;
+        transition: transform 0.3s ease;
+      }
+
+      .promo-card:hover .feature-check {
+        transform: rotate(360deg);
+      }
+
+      .promo-pricing {
+        margin-bottom: 1.5rem;
+      }
+
+      .price-old {
+        text-decoration: line-through;
+        color: #666;
+        font-size: 1rem;
+        display: block;
+        margin-bottom: 0.3rem;
+      }
+
+      .price-current {
+        font-size: 2.5rem;
+        color: #d4af37;
+        font-weight: 700;
+        transition: all 0.3s ease;
+      }
+
+      .promo-card:hover .price-current {
+        transform: scale(1.1);
+        text-shadow: 0 0 20px rgba(212, 175, 55, 0.8);
+      }
+
+      .price-currency {
+        font-size: 1.2rem;
+        font-weight: 400;
+      }
+
+      .savings-badge {
+        background-color: #1a1a1a;
+        color: #d4af37;
+        padding: 0.3rem 0.8rem;
+        font-size: 0.85rem;
+        display: inline-block;
+        margin-top: 0.5rem;
+        animation: pulseHero 2s ease-in-out infinite;
+      }
+
+      .btn-whatsapp {
+        background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+        color: #ffffff;
+        padding: 1rem 2rem;
+        border: none;
+        font-size: 1rem;
+        font-weight: 700;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-block;
+        letter-spacing: 1px;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease;
+      }
+
+      .btn-whatsapp::before {
+        content: "💬";
+        margin-right: 0.5rem;
+      }
+
+      .btn-whatsapp:hover {
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+      }
+
+      /* Trust Bar */
+      .trust-bar {
+        background-color: #000000;
+        border-top: 1px solid #222;
+        border-bottom: 1px solid #222;
+        padding: 2rem 0;
+      }
+
+      .trust-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+        text-align: center;
+      }
+
+      .trust-item {
+        padding: 1rem;
+        transition: all 0.3s ease;
+      }
+
+      .trust-item:hover {
+        transform: translateY(-8px);
+      }
+
+      .trust-icon {
+        font-size: 2.5rem;
+        color: #d4af37;
+        margin-bottom: 0.8rem;
+        transition: transform 0.3s ease;
+        display: inline-block;
+      }
+
+      .trust-item:hover .trust-icon {
+        transform: scale(1.2) rotate(360deg);
+        animation: bounce 0.5s ease;
+      }
+
+      .trust-title {
+        color: #ffffff;
+        font-weight: 600;
+        margin-bottom: 0.3rem;
+        font-size: 0.95rem;
+      }
+
+      .trust-desc {
+        color: #999;
+        font-size: 0.85rem;
+      }
+
+      /* Categorías */
+      .categorias {
+        background-color: #000000;
+        padding: 80px 0;
+      }
+
+      .categorias-grid {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 1.5rem;
+      }
+
+      .categoria-card {
+        background-color: #0a0a0a;
+        padding: 2rem 1rem;
+        border: 1px solid #222;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .categoria-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(212, 175, 55, 0.1),
+          transparent
+        );
+        transition: left 0.5s ease;
+      }
+
+      .categoria-card:hover {
+        border-color: #d4af37;
+        transform: translateY(-10px) scale(1.05);
+        box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+      }
+
+      .categoria-card:hover::before {
+        left: 100%;
+      }
+
+      .categoria-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        display: block;
+        transition: transform 0.4s ease;
+      }
+
+      .categoria-card:hover .categoria-icon {
+        transform: scale(1.3) rotateY(360deg);
+      }
+
+      .categoria-card h3 {
+        color: #d4af37;
+        margin-bottom: 0.3rem;
+        font-size: 1rem;
+        font-weight: 600;
+      }
+
+      .categoria-card p {
+        color: #666;
+        font-size: 0.8rem;
+      }
+
+      /* Productos */
+      .productos {
+        background-color: #0a0a0a;
+        padding: 80px 0;
+      }
+
+      .productos-filter {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 3rem;
+        flex-wrap: wrap;
+      }
+
+      .filter-btn {
+        background-color: transparent;
+        color: #ffffff;
+        border: 1px solid #333;
+        padding: 0.6rem 1.5rem;
+        cursor: pointer;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      .filter-btn::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background-color: #d4af37;
+        transition: all 0.3s ease;
+        transform: translateX(-50%);
+      }
+
+      .filter-btn:hover,
+      .filter-btn.active {
+        background-color: #d4af37;
+        color: #000000;
+        border-color: #d4af37;
+        transform: translateY(-3px);
+      }
+
+      .filter-btn.active::after {
+        width: 100%;
+      }
+
+      .productos-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+      }
+
+      .producto-card {
+        background-color: #000000;
+        border: 1px solid #222;
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+
+      .producto-card:hover {
+        border-color: #d4af37;
+        transform: translateY(-15px) scale(1.03);
+        box-shadow: 0 20px 50px rgba(212, 175, 55, 0.25);
+      }
+
+      .producto-badge {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background-color: #d4af37;
+        color: #000000;
+        padding: 0.3rem 0.8rem;
+        font-size: 0.75rem;
+        font-weight: 700;
+        z-index: 10;
+        animation: pulse-badge 2s ease-in-out infinite;
+      }
+
+      @keyframes pulse-badge {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.08);
+        }
+      }
+
+      .proximamente-overlay {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(212, 175, 55, 0.95);
+        color: #000000;
+        padding: 1rem 2rem;
+        font-size: 1.2rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        z-index: 5;
+        box-shadow: 0 4px 20px rgba(212, 175, 55, 0.5);
+        border: 2px solid #000000;
+        animation: pulse-proximamente 2s ease-in-out infinite;
+      }
+
+      @keyframes pulse-proximamente {
+        0%,
+        100% {
+          transform: translate(-50%, -50%) scale(1);
+          box-shadow: 0 4px 20px rgba(212, 175, 55, 0.5);
+        }
+        50% {
+          transform: translate(-50%, -50%) scale(1.05);
+          box-shadow: 0 8px 30px rgba(212, 175, 55, 0.8);
+        }
+      }
+
+      .producto-imagen {
+        width: 100%;
+        height: 280px;
+        background-color: #1a1a1a;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 4rem;
+        border-bottom: 1px solid #222;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.4s ease;
+      }
+
+      .producto-imagen::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          135deg,
+          transparent 0%,
+          rgba(212, 175, 55, 0.1) 50%,
+          transparent 100%
+        );
+        opacity: 0;
+        transition: opacity 0.4s ease;
+      }
+
+      .producto-card:hover .producto-imagen::before {
+        opacity: 1;
+        animation: rotateGradient 2s linear infinite;
+      }
+
+      @keyframes rotateGradient {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      .producto-card:hover .producto-imagen {
+        transform: scale(1.1);
+      }
+
+      .producto-info {
+        padding: 1.5rem;
+      }
+
+      .producto-categoria {
+        color: #666;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 0.5rem;
+      }
+
+      .producto-info h3 {
+        color: #ffffff;
+        margin-bottom: 0.8rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+        transition: color 0.3s ease;
+      }
+
+      .producto-card:hover .producto-info h3 {
+        color: #d4af37;
+      }
+
+      .producto-rating {
+        margin-bottom: 0.8rem;
+      }
+
+      .stars {
+        color: #d4af37;
+        font-size: 0.9rem;
+      }
+
+      .rating-count {
+        color: #666;
+        font-size: 0.8rem;
+      }
+
+      .producto-descripcion {
+        color: #999;
+        margin-bottom: 1rem;
+        font-size: 0.9rem;
+        line-height: 1.5;
+      }
+
+      .producto-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 1rem;
+        border-top: 1px solid #222;
+      }
+
+      .producto-precio {
+        font-size: 1.8rem;
+        color: #d4af37;
+        font-weight: 700;
+        transition: all 0.3s ease;
+      }
+
+      .producto-card:hover .producto-precio {
+        transform: scale(1.15);
+        text-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
+      }
+
+      .btn-contact {
+        background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+        color: #ffffff;
+        border: none;
+        padding: 0.7rem 1.2rem;
+        cursor: pointer;
+        font-size: 0.85rem;
+        font-weight: 700;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .btn-contact:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+      }
+
+      .btn-contact:active {
+        transform: translateY(0);
+      }
+
+      /* Social Proof */
+      .social-proof {
+        background-color: #000000;
+        padding: 80px 0;
+        border-top: 1px solid #222;
+      }
+
+      .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+      }
+
+      .testimonial-card {
+        background-color: #0a0a0a;
+        border: 1px solid #222;
+        padding: 2rem;
+        transition: all 0.4s ease;
+        position: relative;
+      }
+
+      .testimonial-card::before {
+        content: '"';
+        position: absolute;
+        top: -10px;
+        left: 20px;
+        font-size: 5rem;
+        color: #d4af37;
+        opacity: 0.2;
+        font-family: Georgia, serif;
+        transition: all 0.3s ease;
+      }
+
+      .testimonial-card:hover::before {
+        opacity: 0.4;
+        transform: scale(1.2) rotate(-5deg);
+      }
+
+      .testimonial-stars {
+        color: #d4af37;
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+      }
+
+      .testimonial-text {
+        color: #ccc;
+        margin-bottom: 1.5rem;
+        font-style: italic;
+        line-height: 1.7;
+      }
+
+      .testimonial-author {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .author-avatar {
+        width: 50px;
+        height: 50px;
+        background-color: #d4af37;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        color: #000000;
+        transition: all 0.3s ease;
+      }
+
+      .testimonial-card:hover .author-avatar {
+        transform: scale(1.15) rotate(360deg);
+        box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+      }
+
+      .author-info h4 {
+        color: #ffffff;
+        font-size: 0.95rem;
+        margin-bottom: 0.2rem;
+      }
+
+      .author-info p {
+        color: #666;
+        font-size: 0.8rem;
+      }
+
+      /* Footer */
+      footer {
+        background-color: #000000;
+        border-top: 1px solid #222;
+        padding: 60px 0 20px;
+      }
+
+      .footer-main {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+        gap: 3rem;
+        margin-bottom: 3rem;
+      }
+
+      .footer-column h3 {
+        color: #d4af37;
+        margin-bottom: 1.5rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+      }
+
+      .footer-column p {
+        color: #999;
+        margin-bottom: 1rem;
+        line-height: 1.7;
+      }
+
+      .footer-links {
+        list-style: none;
+      }
+
+      .footer-links li {
+        margin-bottom: 0.8rem;
+      }
+
+      .footer-links a {
+        color: #999;
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+        display: inline-block;
+        cursor: pointer;
+      }
+
+      .footer-links a:hover {
+        color: #d4af37;
+        transform: translateX(8px);
+      }
+
+      .social-links {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .social-link {
+        width: 40px;
+        height: 40px;
+        background-color: #1a1a1a;
+        border: 1px solid #333;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #d4af37;
+        text-decoration: none;
+        font-size: 1.2rem;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .social-link:hover {
+        background-color: #d4af37;
+        color: #000000;
+        border-color: #d4af37;
+        transform: translateY(-8px) rotate(360deg) scale(1.1);
+        box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
+      }
+
+      .footer-bottom {
+        border-top: 1px solid #222;
+        padding-top: 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .footer-bottom p {
+        color: #666;
+        font-size: 0.85rem;
+      }
+
+      .payment-methods {
+        display: flex;
+        gap: 1rem;
+        font-size: 1.5rem;
+      }
+
+      .payment-methods span {
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .payment-methods span:hover {
+        transform: scale(1.3) translateY(-5px);
+        filter: drop-shadow(0 5px 10px rgba(212, 175, 55, 0.5));
+      }
+
+      /* Badges Sistema 7-RP y Reprint Academy */
+      .system-badge,
+      .startup-badge {
+        color: #d4af37;
+        font-weight: 600;
+        margin-left: 1.5rem;
+        padding: 0.3rem 0.8rem;
+        background-color: rgba(212, 175, 55, 0.1);
+        border: 1px solid rgba(212, 175, 55, 0.3);
+        border-radius: 4px;
+        font-size: 0.8rem;
+        display: inline-block;
+        animation: badgePulse 3s ease-in-out infinite;
+      }
+
+      .startup-badge {
+        color: #4a9eff;
+        background-color: rgba(74, 158, 255, 0.1);
+        border-color: rgba(74, 158, 255, 0.3);
+      }
+
+      @keyframes badgePulse {
+        0%,
+        100% {
+          transform: scale(1);
+          box-shadow: 0 0 5px rgba(212, 175, 55, 0.3);
+        }
+        50% {
+          transform: scale(1.05);
+          box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        }
+      }
+
+      .system-badge-footer,
+      .startup-badge-footer {
+        color: #d4af37;
+        font-weight: 600;
+        margin: 0 0.5rem;
+        transition: all 0.3s ease;
+      }
+
+      .startup-badge-footer {
+        color: #4a9eff;
+      }
+
+      .system-badge-footer:hover,
+      .startup-badge-footer:hover {
+        transform: scale(1.1);
+        text-shadow: 0 0 10px currentColor;
+      }
+
+      /* Overlay Próximamente - Celeste */
+      .proximamente-overlay {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(74, 158, 255, 0.95);
+        color: #ffffff;
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        z-index: 5;
+        box-shadow: 0 4px 20px rgba(74, 158, 255, 0.6);
+        border: 2px solid #ffffff;
+        border-radius: 8px;
+        animation: pulseProximamente 2s ease-in-out infinite;
+        backdrop-filter: blur(5px);
+      }
+
+      @keyframes pulseProximamente {
+        0%,
+        100% {
+          transform: translate(-50%, -50%) scale(1);
+          box-shadow: 0 4px 20px rgba(74, 158, 255, 0.6);
+        }
+        50% {
+          transform: translate(-50%, -50%) scale(1.08);
+          box-shadow: 0 8px 35px rgba(74, 158, 255, 0.9);
+        }
+      }
+
+      /* Overlay Agotado - Rojo */
+      .agotado-overlay {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(220, 53, 69, 0.95);
+        color: #ffffff;
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        z-index: 5;
+        box-shadow: 0 4px 20px rgba(220, 53, 69, 0.6);
+        border: 2px solid #ffffff;
+        border-radius: 8px;
+        animation: pulseAgotado 2.5s ease-in-out infinite;
+        backdrop-filter: blur(5px);
+      }
+
+      @keyframes pulseAgotado {
+        0%,
+        100% {
+          transform: translate(-50%, -50%) scale(1) rotate(0deg);
+          box-shadow: 0 4px 20px rgba(220, 53, 69, 0.6);
+        }
+        25% {
+          transform: translate(-50%, -50%) scale(1.05) rotate(-2deg);
+        }
+        75% {
+          transform: translate(-50%, -50%) scale(1.05) rotate(2deg);
+        }
+        50% {
+          box-shadow: 0 8px 35px rgba(220, 53, 69, 0.9);
+        }
+      }
+
+      /* Efectos hover para productos con overlay */
+      .producto-card.proximamente:hover .proximamente-overlay {
+        animation: pulseProximamente 1s ease-in-out infinite, shake 0.5s ease;
+      }
+
+      .producto-card.agotado:hover .agotado-overlay {
+        animation: pulseAgotado 1.5s ease-in-out infinite,
+          wiggleAgotado 0.6s ease;
+      }
+
+      @keyframes shake {
+        0%,
+        100% {
+          transform: translate(-50%, -50%) rotate(0deg);
+        }
+        25% {
+          transform: translate(-50%, -50%) rotate(-5deg);
+        }
+        75% {
+          transform: translate(-50%, -50%) rotate(5deg);
+        }
+      }
+
+      @keyframes wiggleAgotado {
+        0%,
+        100% {
+          transform: translate(-50%, -50%) scale(1);
+        }
+        25% {
+          transform: translate(-50%, -50%) scale(1.1) rotate(-3deg);
+        }
+        50% {
+          transform: translate(-50%, -50%) scale(0.95);
+        }
+        75% {
+          transform: translate(-50%, -50%) scale(1.1) rotate(3deg);
+        }
+      }
+
+      /* Efecto de brillo en los overlays */
+      .proximamente-overlay::before,
+      .agotado-overlay::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.4),
+          transparent
+        );
+        animation: shineOverlay 3s infinite;
+      }
+
+      @keyframes shineOverlay {
+        0% {
+          left: -100%;
+        }
+        50%,
+        100% {
+          left: 200%;
+        }
+      }
+
+      /* Responsive */
+      @media (max-width: 1024px) {
+        .promo-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .productos-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        .categorias-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        .footer-main {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hero-content h1 {
+          font-size: 2.5rem;
+        }
+
+        .nav-links {
+          display: none;
+        }
+
+        .productos-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .trust-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .testimonials-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .categorias-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .footer-main {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Scroll Reveal */
+      .scroll-reveal {
+        opacity: 0;
+        transform: translateY(50px);
+        transition: all 0.8s ease;
+      }
+
+      .scroll-reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @keyframes shimmer {
+        0% {
+          background-position: -1000px 0;
+        }
+        100% {
+          background-position: 1000px 0;
+        }
+      }
+
+      @keyframes zoomIn {
+        from {
+          transform: scale(0.8);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- WhatsApp Float Button -->
+    <a
+      href="https://wa.me/59112345678?text=Hola!%20Me%20interesa%20conocer%20más%20sobre%20sus%20productos"
+      class="whatsapp-float"
+      target="_blank"
+      title="Contáctanos por WhatsApp"
+    >
+      💬
+    </a>
+
+    <!-- Header Top Bar -->
+    <header>
+      <div class="header-top">
+        <div class="container">
+          <div class="header-top-content">
+            <div class="header-contact">
+              <a href="tel:+59112345678">📞 +591 123 456 789</a>
+              <a href="mailto:contacto@onetouch.com"
+                >📧 contacto@onetouch.com</a
+              >
+              <span class="system-badge">⚙️ Sistema 7-RP</span>
+            </div>
+            <div class="header-shipping">
+              🚚 Envío GRATIS en compras mayores a Bs. 700 |
+              <span class="startup-badge">🚀 Reprint Academy</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Header Main -->
+      <div class="header-main">
+        <div class="container">
+          <nav>
+            <div class="logo" onclick="scrollToSection('inicio')">
+              ONE TOUCH
+            </div>
+            <ul class="nav-links">
+              <li><a href="#inicio" class="nav-link active">Inicio</a></li>
+              <li><a href="#promociones" class="nav-link">Ofertas</a></li>
+              <li><a href="#categorias" class="nav-link">Categorías</a></li>
+              <li><a href="#productos" class="nav-link">Productos</a></li>
+              <li><a href="#testimonios" class="nav-link">Testimonios</a></li>
+              <li><a href="#contacto" class="nav-link">Contacto</a></li>
+            </ul>
+            <div class="nav-actions">
+              <a
+                href="https://wa.me/59112345678?text=Hola!%20Necesito%20ayuda"
+                target="_blank"
+                class="nav-icon"
+                title="WhatsApp"
+                >💬</a
+              >
+            </div>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <!-- Alert Banner -->
+    <div class="alert-banner">
+      ⚡ CYBER WEEK: Hasta 40% OFF en productos seleccionados | Ofertas por
+      tiempo limitado
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-badge-top">
+            ✨ BIENVENIDO A LA TECNOLOGÍA DEL FUTURO
+          </div>
+          <h1>
+            <span class="word-animate" style="--delay: 0.1s">ONE</span>
+            <span class="word-animate" style="--delay: 0.3s">TOUCH</span>
+          </h1>
+          <p class="subtitle">
+            <span class="subtitle-word" style="--delay: 0.5s">Tecnología</span>
+            <span class="subtitle-word" style="--delay: 0.6s">Premium</span>
+            <span class="subtitle-word" style="--delay: 0.7s">al</span>
+            <span class="subtitle-word" style="--delay: 0.8s">Alcance</span>
+            <span class="subtitle-word" style="--delay: 0.9s">de</span>
+            <span class="subtitle-word" style="--delay: 1s">tu</span>
+            <span class="subtitle-word" style="--delay: 1.1s">Mano</span>
+          </p>
+          <div class="hero-cta-buttons">
+            <a href="#productos" class="btn-hero-primary">
+              🛒 EXPLORAR PRODUCTOS
+              <span class="btn-arrow">→</span>
+            </a>
+            <a href="#promociones" class="btn-hero-secondary">
+              ⚡ VER OFERTAS
+            </a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat-item">
+              <div class="stat-icon">👥</div>
+              <span class="stat-number" data-target="10000">0</span>
+              <span class="stat-label">Clientes Satisfechos</span>
+              <div class="stat-progress"></div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-icon">📦</div>
+              <span class="stat-number" data-target="500">0</span>
+              <span class="stat-label">Productos Disponibles</span>
+              <div class="stat-progress"></div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-icon">🛡️</div>
+              <span class="stat-number">24/7</span>
+              <span class="stat-label">Soporte Técnico</span>
+              <div class="stat-progress"></div>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">500</span>
+              <span class="stat-label">Productos Disponibles</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">24/7</span>
+              <span class="stat-label">Soporte Técnico</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Promociones Section -->
+    <section class="promociones" id="promociones">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">OFERTAS EXCLUSIVAS</div>
+          <h2 class="section-title">Promociones del Mes</h2>
+          <p class="section-subtitle">
+            Aprovecha estos descuentos increíbles antes que se agoten
+          </p>
+        </div>
+
+        <div class="promo-grid">
+          <!-- Promo Card 1 -->
+          <div class="promo-card">
+            <div class="promo-header">
+              <div class="promo-badge">AHORRA 30%</div>
+            </div>
+            <div class="promo-body">
+              <h3>Smartphone Ultra Pro</h3>
+              <ul class="promo-features">
+                <li>
+                  <span class="feature-check">✓</span> Pantalla AMOLED 6.7"
+                </li>
+                <li>
+                  <span class="feature-check">✓</span> Cámara 108MP Triple
+                </li>
+                <li>
+                  <span class="feature-check">✓</span> 256GB Almacenamiento
+                </li>
+                <li><span class="feature-check">✓</span> 5G Ultrarrápido</li>
+                <li><span class="feature-check">✓</span> Batería 5000mAh</li>
+              </ul>
+              <div class="promo-pricing">
+                <span class="price-old">Bs. 9,023</span>
+                <div class="price-current">Bs. 6,250</div>
+                <div class="savings-badge">Ahorras Bs. 2,773</div>
+              </div>
+              <a
+                href="https://wa.me/59112345678?text=Hola!%20Me%20interesa%20el%20Smartphone%20Ultra%20Pro%20en%20oferta"
+                class="btn-whatsapp"
+                target="_blank"
+                >CONSULTAR AHORA</a
+              >
+            </div>
+          </div>
+
+          <!-- Promo Card 2 -->
+          <div class="promo-card">
+            <div class="promo-header">
+              <div class="promo-badge">AHORRA 25%</div>
+            </div>
+            <div class="promo-body">
+              <h3>Laptop Gaming Elite</h3>
+              <ul class="promo-features">
+                <li><span class="feature-check">✓</span> Intel i7 12va Gen</li>
+                <li><span class="feature-check">✓</span> RTX 4060 8GB GDDR6</li>
+                <li><span class="feature-check">✓</span> 16GB RAM DDR5</li>
+                <li><span class="feature-check">✓</span> SSD 1TB NVMe</li>
+                <li><span class="feature-check">✓</span> Pantalla 165Hz QHD</li>
+              </ul>
+              <div class="promo-pricing">
+                <span class="price-old">Bs. 13,889</span>
+                <div class="price-current">Bs. 10,417</div>
+                <div class="savings-badge">Ahorras Bs. 3,472</div>
+              </div>
+              <a
+                href="https://wa.me/59112345678?text=Hola!%20Me%20interesa%20la%20Laptop%20Gaming%20Elite%20en%20oferta"
+                class="btn-whatsapp"
+                target="_blank"
+                >CONSULTAR AHORA</a
+              >
+            </div>
+          </div>
+
+          <!-- Promo Card 3 -->
+          <div class="promo-card">
+            <div class="promo-header">
+              <div class="promo-badge">AHORRA 40%</div>
+            </div>
+            <div class="promo-body">
+              <h3>Audífonos Premium ANC</h3>
+              <ul class="promo-features">
+                <li>
+                  <span class="feature-check">✓</span> Cancelación de Ruido
+                </li>
+                <li><span class="feature-check">✓</span> 40h Batería Total</li>
+                <li><span class="feature-check">✓</span> Audio Hi-Res</li>
+                <li><span class="feature-check">✓</span> Bluetooth 5.3</li>
+                <li><span class="feature-check">✓</span> Carga Rápida</li>
+              </ul>
+              <div class="promo-pricing">
+                <span class="price-old">Bs. 2,424</span>
+                <div class="price-current">Bs. 1,454</div>
+                <div class="savings-badge">Ahorras Bs. 970</div>
+              </div>
+              <a
+                href="https://wa.me/59112345678?text=Hola!%20Me%20interesan%20los%20Audífonos%20Premium%20ANC%20en%20oferta"
+                class="btn-whatsapp"
+                target="_blank"
+                >CONSULTAR AHORA</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust Bar -->
+    <section class="trust-bar">
+      <div class="container">
+        <div class="trust-grid">
+          <div class="trust-item">
+            <div class="trust-icon">🚚</div>
+            <div class="trust-title">Envío Gratis</div>
+            <p class="trust-desc">En compras mayores a Bs. 700</p>
+          </div>
+          <div class="trust-item">
+            <div class="trust-icon">🔒</div>
+            <div class="trust-title">Pago Seguro</div>
+            <p class="trust-desc">Encriptación SSL 256-bit</p>
+          </div>
+          <div class="trust-item">
+            <div class="trust-icon">✅</div>
+            <div class="trust-title">Garantía Oficial</div>
+            <p class="trust-desc">1 año en todos los productos</p>
+          </div>
+          <div class="trust-item">
+            <div class="trust-icon">💬</div>
+            <div class="trust-title">Soporte 24/7</div>
+            <p class="trust-desc">Atención inmediata siempre</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="categorias" id="categorias">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">EXPLORA</div>
+          <h2 class="section-title">Categorías de Productos</h2>
+          <p class="section-subtitle">Encuentra exactamente lo que necesitas</p>
+        </div>
+
+        <div class="categorias-grid">
+          <div class="categoria-card" onclick="filterProducts('smartphones')">
+            <span class="categoria-icon">📱</span>
+            <h3>Smartphones</h3>
+            <p>120+ modelos</p>
+          </div>
+          <div class="categoria-card" onclick="filterProducts('laptops')">
+            <span class="categoria-icon">💻</span>
+            <h3>Laptops</h3>
+            <p>85+ modelos</p>
+          </div>
+          <div class="categoria-card" onclick="filterProducts('audio')">
+            <span class="categoria-icon">🎧</span>
+            <h3>Audio</h3>
+            <p>150+ productos</p>
+          </div>
+          <div class="categoria-card" onclick="filterProducts('wearables')">
+            <span class="categoria-icon">⌚</span>
+            <h3>Wearables</h3>
+            <p>60+ productos</p>
+          </div>
+          <div class="categoria-card" onclick="filterProducts('camaras')">
+            <span class="categoria-icon">📷</span>
+            <h3>Cámaras</h3>
+            <p>45+ modelos</p>
+          </div>
+          <div class="categoria-card" onclick="filterProducts('accesorios')">
+            <span class="categoria-icon">🎮</span>
+            <h3>Gaming</h3>
+            <p>200+ productos</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Products -->
+    <section class="productos" id="productos">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">CATÁLOGO COMPLETO</div>
+          <h2 class="section-title">Nuestros Productos</h2>
+          <p class="section-subtitle">Tecnología de última generación</p>
+        </div>
+
+        <div class="productos-filter">
+          <button class="filter-btn active" data-filter="todos">Todos</button>
+          <button class="filter-btn" data-filter="smartphones">
+            Smartphones
+          </button>
+          <button class="filter-btn" data-filter="laptops">Laptops</button>
+          <button class="filter-btn" data-filter="audio">Audio</button>
+          <button class="filter-btn" data-filter="wearables">Wearables</button>
+          <button class="filter-btn" data-filter="accesorios">
+            Accesorios
+          </button>
+        </div>
+
+        <div class="productos-grid">
+          <!-- Product 1 -->
+          <div class="producto-card proximamente" data-category="smartphones">
+            <div class="producto-imagen">
+              <span class="producto-badge">-30%</span>
+              <div class="proximamente-overlay">PRÓXIMAMENTE</div>
+              📱
+            </div>
+            <div class="producto-info">
+              <div class="producto-categoria">SMARTPHONES</div>
+              <h3>Smartphone Pro Max</h3>
+              <div class="producto-rating">
+                <span class="stars">★★★★★</span>
+                <span class="rating-count">(245 reseñas)</span>
+              </div>
+              <p class="producto-descripcion">
+                Pantalla OLED 6.7", 256GB, Cámara 108MP
+              </p>
+              <div class="producto-footer">
+                <div class="producto-precio">Bs. 6,250</div>
+                <button
+                  class="btn-contact"
+                  onclick="contactProduct('Smartphone Pro Max', '6,250')"
+                >
+                  CONSULTAR
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 2 -->
+          <div class="producto-card" data-category="laptops">
+            <div class="producto-imagen">
+              <span class="producto-badge">-25%</span>
+              💻
+            </div>
+            <div class="producto-info">
+              <div class="producto-categoria">LAPTOPS</div>
+              <h3>Laptop Gaming Elite</h3>
+              <div class="producto-rating">
+                <span class="stars">★★★★★</span>
+                <span class="rating-count">(189 reseñas)</span>
+              </div>
+              <p class="producto-descripcion">
+                Intel i7, RTX 4060, 16GB RAM, 1TB SSD
+              </p>
+              <div class="producto-footer">
+                <div class="producto-precio">Bs. 10,417</div>
+                <button
+                  class="btn-contact"
+                  onclick="contactProduct('Laptop Gaming Elite', '10,417')"
+                >
+                  CONSULTAR
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 3 -->
+          <div class="producto-card" data-category="audio">
+            <div class="producto-imagen">
+              <span class="producto-badge">-40%</span>
+              🎧
+            </div>
+            <div class="producto-info">
+              <div class="producto-categoria">AUDIO</div>
+              <h3>Audífonos Premium ANC</h3>
+              <div class="producto-rating">
+                <span class="stars">★★★★★</span>
+                <span class="rating-count">(412 reseñas)</span>
+              </div>
+              <p class="producto-descripcion">
+                Cancelación de ruido, 40h batería
+              </p>
+              <div class="producto-footer">
+                <div class="producto-precio">Bs. 1,454</div>
+                <button
+                  class="btn-contact"
+                  onclick="contactProduct('Audífonos Premium ANC', '1,454')"
+                >
+                  CONSULTAR
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 4 -->
+          <div class="producto-card agotado" data-category="wearables">
+            <div class="producto-imagen">
+              <span class="producto-badge">NUEVO</span>
+              <div class="agotado-overlay">AGOTADO</div>
+              ⌚
+            </div>
+            <div class="producto-info">
+              <div class="producto-categoria">WEARABLES</div>
+              <h3>Smartwatch Ultra</h3>
+              <div class="producto-rating">
+                <span class="stars">★★★★☆</span>
+                <span class="rating-count">(156 reseñas)</span>
+              </div>
+              <p class="producto-descripcion">
+                Monitor cardíaco, GPS, resistente al agua
+              </p>
+              <div class="producto-footer">
+                <div class="producto-precio">Bs. 2,778</div>
+                <button
+                  class="btn-contact"
+                  onclick="contactProduct('Smartwatch Ultra', '2,778')"
+                >
+                  CONSULTAR
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 5 -->
+          <div class="producto-card" data-category="camaras">
+            <div class="producto-imagen">📷</div>
+            <div class="producto-info">
+              <div class="producto-categoria">CÁMARAS</div>
+              <h3>Cámara Profesional 4K</h3>
+              <div class="producto-rating">
+                <span class="stars">★★★★★</span>
+                <span class="rating-count">(98 reseñas)</span>
+              </div>
+              <p class="producto-descripcion">42MP, 4K Video, Kit completo</p>
+              <div class="producto-footer">
+                <div class="producto-precio">Bs. 15,278</div>
+                <button
+                  class="btn-contact"
+                  onclick="contactProduct('Cámara Profesional 4K', '15,278')"
+                >
+                  CONSULTAR
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 6 -->
+          <div class="producto-card" data-category="accesorios">
+            <div class="producto-imagen">
+              <span class="producto-badge">OFERTA</span>
+              🖥️
+            </div>
+            <div class="producto-info">
+              <div class="producto-categoria">MONITORES</div>
+              <h3>Monitor 4K Gaming</h3>
+              <div class="producto-rating">
+                <span class="stars">★★★★★</span>
+                <span class="rating-count">(267 reseñas)</span>
+              </div>
+              <p class="producto-descripcion">32", HDR, 165Hz, 1ms respuesta</p>
+              <div class="producto-footer">
+                <div class="producto-precio">Bs. 4,514</div>
+                <button
+                  class="btn-contact"
+                  onclick="contactProduct('Monitor 4K Gaming', '4,514')"
+                >
+                  CONSULTAR
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 7 -->
+          <div class="producto-card" data-category="accesorios">
+            <div class="producto-imagen">⌨️</div>
+            <div class="producto-info">
+              <div class="producto-categoria">ACCESORIOS</div>
+              <h3>Teclado Mecánico RGB</h3>
+              <div class="producto-rating">
+                <span class="stars">★★★★☆</span>
+                <span class="rating-count">(324 reseñas)</span>
+              </div>
+              <p class="producto-descripcion">
+                Switches Blue, iluminación personalizable
+              </p>
+              <div class="producto-footer">
+                <div class="producto-precio">Bs. 896</div>
+                <button
+                  class="btn-contact"
+                  onclick="contactProduct('Teclado Mecánico RGB', '896')"
+                >
+                  CONSULTAR
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 8 -->
+          <div class="producto-card" data-category="accesorios">
+            <div class="producto-imagen">🖱️</div>
+            <div class="producto-info">
+              <div class="producto-categoria">ACCESORIOS</div>
+              <h3>Mouse Gaming Pro</h3>
+              <div class="producto-rating">
+                <span class="stars">★★★★★</span>
+                <span class="rating-count">(401 reseñas)</span>
+              </div>
+              <p class="producto-descripcion">
+                20,000 DPI, sensor óptico avanzado
+              </p>
+              <div class="producto-footer">
+                <div class="producto-precio">Bs. 618</div>
+                <button
+                  class="btn-contact"
+                  onclick="contactProduct('Mouse Gaming Pro', '618')"
+                >
+                  CONSULTAR
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Social Proof / Testimonials -->
+    <section class="social-proof" id="testimonios">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">TESTIMONIOS</div>
+          <h2 class="section-title">Lo Que Dicen Nuestros Clientes</h2>
+          <p class="section-subtitle">
+            Más de 10,000 clientes satisfechos en Bolivia
+          </p>
+        </div>
+
+        <div class="testimonials-grid">
+          <div class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">
+              "Excelente servicio y productos de calidad. Compré mi laptop
+              gaming y llegó en perfectas condiciones. El soporte técnico es muy
+              profesional."
+            </p>
+            <div class="testimonial-author">
+              <div class="author-avatar">MC</div>
+              <div class="author-info">
+                <h4>María Condori</h4>
+                <p>Cochabamba, Bolivia</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">
+              "Los mejores precios del mercado. Aproveché las ofertas y me llevé
+              un smartphone increíble. La entrega fue rápida y el producto
+              auténtico."
+            </p>
+            <div class="testimonial-author">
+              <div class="author-avatar">JR</div>
+              <div class="author-info">
+                <h4>Jorge Rojas</h4>
+                <p>Santa Cruz, Bolivia</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">
+              "Muy recomendado! La garantía oficial me dio mucha confianza. Ya
+              he comprado 3 veces y siempre perfecta atención. Son los mejores
+              en tecnología."
+            </p>
+            <div class="testimonial-author">
+              <div class="author-avatar">AM</div>
+              <div class="author-info">
+                <h4>Ana Morales</h4>
+                <p>La Paz, Bolivia</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contacto">
+      <div class="container">
+        <div class="footer-main">
+          <!-- Company Info -->
+          <div class="footer-column">
+            <h3>ONE TOUCH</h3>
+            <p>
+              Tu tienda de confianza para productos electrónicos premium en
+              Bolivia. Más de 5 años llevando tecnología de calidad a tu hogar.
+            </p>
+            <div class="social-links">
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                class="social-link"
+                title="Facebook"
+                >📘</a
+              >
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                class="social-link"
+                title="Instagram"
+                >📷</a
+              >
+              <a
+                href="https://twitter.com"
+                target="_blank"
+                class="social-link"
+                title="Twitter"
+                >🐦</a
+              >
+              <a
+                href="https://wa.me/59112345678"
+                target="_blank"
+                class="social-link"
+                title="WhatsApp"
+                >💬</a
+              >
+            </div>
+          </div>
+
+          <!-- Quick Links -->
+          <div class="footer-column">
+            <h3>Enlaces Rápidos</h3>
+            <ul class="footer-links">
+              <li><a href="#inicio" class="scroll-link">Inicio</a></li>
+              <li><a href="#promociones" class="scroll-link">Ofertas</a></li>
+              <li><a href="#productos" class="scroll-link">Productos</a></li>
+              <li>
+                <a href="#testimonios" class="scroll-link">Testimonios</a>
+              </li>
+              <li><a href="#contacto" class="scroll-link">Contacto</a></li>
+            </ul>
+          </div>
+
+          <!-- Customer Service -->
+          <div class="footer-column">
+            <h3>Atención al Cliente</h3>
+            <ul class="footer-links">
+              <li>
+                <a
+                  href="https://wa.me/59112345678?text=Hola!%20Necesito%20ayuda"
+                  target="_blank"
+                  >Centro de Ayuda</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://wa.me/59112345678?text=Consulta%20sobre%20envíos"
+                  target="_blank"
+                  >Política de Envíos</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://wa.me/59112345678?text=Consulta%20sobre%20devoluciones"
+                  target="_blank"
+                  >Devoluciones</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://wa.me/59112345678?text=Consulta%20sobre%20garantías"
+                  target="_blank"
+                  >Garantías</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://wa.me/59112345678?text=Consulta%20sobre%20términos"
+                  target="_blank"
+                  >Términos y Condiciones</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Categories -->
+          <div class="footer-column">
+            <h3>Categorías</h3>
+            <ul class="footer-links">
+              <li>
+                <a onclick="filterProducts('smartphones')">Smartphones</a>
+              </li>
+              <li><a onclick="filterProducts('laptops')">Laptops</a></li>
+              <li><a onclick="filterProducts('audio')">Audio</a></li>
+              <li><a onclick="filterProducts('wearables')">Wearables</a></li>
+              <li><a onclick="filterProducts('accesorios')">Gaming</a></li>
+            </ul>
+          </div>
+
+          <!-- Contact -->
+          <div class="footer-column">
+            <h3>Contacto</h3>
+            <ul class="footer-links">
+              <li>📍 Sacaba, Cochabamba</li>
+              <li><a href="tel:+59112345678">📞 +591 123 456 789</a></li>
+              <li>
+                <a href="mailto:contacto@onetouch.com"
+                  >📧 contacto@onetouch.com</a
+                >
+              </li>
+              <li>🕒 Lun - Sáb: 9AM - 8PM</li>
+              <li>🕒 Dom: 10AM - 6PM</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>
+            &copy; 2025 One Touch Bolivia. Todos los derechos reservados. |
+            <span class="system-badge-footer">⚙️ Sistema 7-RP</span> |
+            <span class="startup-badge-footer">🚀 Reprint Academy</span>
+          </p>
+          <div class="payment-methods">
+            <span title="Visa">💳</span>
+            <span title="Mastercard">💳</span>
+            <span title="PayPal">💰</span>
+            <span title="Transferencia">🏦</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Scroll suave para todos los enlaces internos
+      function scrollToSection(sectionId) {
+        const section = document.getElementById(sectionId);
+        if (section) {
+          const headerOffset = 100;
+          const elementPosition = section.getBoundingClientRect().top;
+          const offsetPosition =
+            elementPosition + window.pageYOffset - headerOffset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth",
+          });
+        }
+      }
+
+      // Activar el enlace del nav según la sección visible
+      window.addEventListener("scroll", function () {
+        const header = document.querySelector("header");
+        const sections = document.querySelectorAll("section[id]");
+        const navLinks = document.querySelectorAll(".nav-link");
+
+        // Header scroll effect
+        if (window.scrollY > 50) {
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
+        }
+
+        // Activar enlace según sección visible
+        let current = "";
+        sections.forEach((section) => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.clientHeight;
+          if (window.pageYOffset >= sectionTop - 150) {
+            current = section.getAttribute("id");
+          }
+        });
+
+        navLinks.forEach((link) => {
+          link.classList.remove("active");
+          if (link.getAttribute("href") === "#" + current) {
+            link.classList.add("active");
+          }
+        });
+      });
+
+      // Manejar clicks en los enlaces de navegación
+      document.querySelectorAll(".nav-link, .scroll-link").forEach((link) => {
+        link.addEventListener("click", function (e) {
+          e.preventDefault();
+          const targetId = this.getAttribute("href").substring(1);
+          scrollToSection(targetId);
+        });
+      });
+
+      // Función para contactar sobre un producto específico
+      function contactProduct(productName, price) {
+        const message = `Hola! Me interesa el producto: ${productName} - Precio: Bs. ${price}. ¿Está disponible?`;
+        const whatsappUrl = `https://wa.me/59112345678?text=${encodeURIComponent(
+          message
+        )}`;
+        window.open(whatsappUrl, "_blank");
+      }
+
+      // Filtrar productos por categoría
+      function filterProducts(category) {
+        const productos = document.querySelectorAll(".producto-card");
+        const filterBtns = document.querySelectorAll(".filter-btn");
+
+        // Scroll a la sección de productos
+        scrollToSection("productos");
+
+        // Actualizar botones activos
+        filterBtns.forEach((btn) => {
+          btn.classList.remove("active");
+          if (btn.dataset.filter === category) {
+            btn.classList.add("active");
+          }
+        });
+
+        // Filtrar productos con animación
+        productos.forEach((producto, index) => {
+          producto.style.display = "none";
+          producto.style.animation = "none";
+
+          setTimeout(() => {
+            const productCategory = producto.dataset.category;
+            if (category === "todos" || productCategory === category) {
+              producto.style.display = "block";
+              setTimeout(() => {
+                producto.style.animation = `zoomIn 0.5s ease ${
+                  index * 0.05
+                }s forwards`;
+              }, 10);
+            }
+          }, 10);
+        });
+      }
+
+      // Manejar clicks en botones de filtro
+      document.querySelectorAll(".filter-btn").forEach((button) => {
+        button.addEventListener("click", function () {
+          const filter = this.dataset.filter;
+          filterProducts(filter);
+        });
+      });
+
+      // Scroll reveal animation
+      function revealOnScroll() {
+        const reveals = document.querySelectorAll(".scroll-reveal");
+
+        reveals.forEach((element) => {
+          const windowHeight = window.innerHeight;
+          const elementTop = element.getBoundingClientRect().top;
+          const elementVisible = 150;
+
+          if (elementTop < windowHeight - elementVisible) {
+            element.classList.add("active");
+          }
+        });
+      }
+
+      window.addEventListener("scroll", revealOnScroll);
+      revealOnScroll();
+
+      // Añadir clase scroll-reveal a elementos
+      document.addEventListener("DOMContentLoaded", function () {
+        // Categorías
+        document.querySelectorAll(".categoria-card").forEach((card, index) => {
+          card.classList.add("scroll-reveal");
+          card.style.transitionDelay = `${index * 0.1}s`;
+        });
+
+        // Productos
+        document.querySelectorAll(".producto-card").forEach((card, index) => {
+          card.classList.add("scroll-reveal");
+          card.style.transitionDelay = `${index * 0.1}s`;
+        });
+
+        // Testimonios
+        document
+          .querySelectorAll(".testimonial-card")
+          .forEach((card, index) => {
+            card.classList.add("scroll-reveal");
+            card.style.transitionDelay = `${index * 0.2}s`;
+          });
+
+        // Trust items
+        document.querySelectorAll(".trust-item").forEach((item, index) => {
+          item.classList.add("scroll-reveal");
+          item.style.transitionDelay = `${index * 0.15}s`;
+        });
+      });
+
+      // Efecto ripple en botones
+      document
+        .querySelectorAll(".btn-contact, .btn-whatsapp, .filter-btn")
+        .forEach((button) => {
+          button.addEventListener("click", function (e) {
+            const ripple = document.createElement("span");
+            const rect = this.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+
+            ripple.style.width = ripple.style.height = size + "px";
+            ripple.style.left = x + "px";
+            ripple.style.top = y + "px";
+            ripple.style.position = "absolute";
+            ripple.style.borderRadius = "50%";
+            ripple.style.background = "rgba(255, 255, 255, 0.5)";
+            ripple.style.transform = "scale(0)";
+            ripple.style.animation = "ripple 0.6s ease-out";
+            ripple.style.pointerEvents = "none";
+
+            this.appendChild(ripple);
+            setTimeout(() => ripple.remove(), 600);
+
+            // Feedback visual
+            this.style.transform = "scale(0.95)";
+            setTimeout(() => {
+              this.style.transform = "";
+            }, 150);
+          });
+        });
+
+      // Animación de ripple
+      const style = document.createElement("style");
+      style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+      document.head.appendChild(style);
+
+      // Parallax effect para hero
+      window.addEventListener("scroll", function () {
+        const scrolled = window.pageYOffset;
+        const hero = document.querySelector(".hero");
+        const heroContent = document.querySelector(".hero-content");
+
+        if (hero) {
+          hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+        }
+        if (heroContent && scrolled < 500) {
+          heroContent.style.opacity = 1 - scrolled / 500;
+        }
+      });
+
+      // Counter animation mejorado para estadísticas
+      function animateCounter(element, target, duration = 2000) {
+        const start = 0;
+        const increment = target / (duration / 16);
+        let current = start;
+
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= target) {
+            element.textContent = target.toLocaleString();
+            clearInterval(timer);
+            element.style.transform = "scale(1.2)";
+            setTimeout(() => {
+              element.style.transform = "scale(1)";
+            }, 200);
+          } else {
+            element.textContent = Math.floor(current).toLocaleString();
+          }
+        }, 16);
+      }
+
+      // Trigger counter animation cuando es visible
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const statNumber = entry.target.querySelector(".stat-number");
+              const statProgress = entry.target.querySelector(".stat-progress");
+
+              if (statNumber && !statNumber.classList.contains("animated")) {
+                statNumber.classList.add("animated");
+                const targetValue = statNumber.getAttribute("data-target");
+
+                if (targetValue && !isNaN(parseInt(targetValue))) {
+                  const target = parseInt(targetValue);
+                  statNumber.textContent = "0";
+                  setTimeout(() => {
+                    animateCounter(statNumber, target);
+                  }, 200);
+                }
+              }
+
+              // Animar la barra de progreso
+              if (statProgress) {
+                statProgress.style.opacity = "1";
+              }
+            }
+          });
+        },
+        { threshold: 0.5 }
+      );
+
+      document.querySelectorAll(".stat-item").forEach((stat) => {
+        observer.observe(stat);
+      });
+
+      // Efecto hover magnético para productos
+      document.querySelectorAll(".producto-card").forEach((card) => {
+        card.addEventListener("mousemove", function (e) {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+
+          const percentX = (x - centerX) / centerX;
+          const percentY = (y - centerY) / centerY;
+
+          card.style.transform = `
+                    translateY(-15px) 
+                    scale(1.03)
+                    rotateY(${percentX * 5}deg)
+                    rotateX(${-percentY * 5}deg)
+                `;
+        });
+
+        card.addEventListener("mouseleave", function () {
+          card.style.transform = "";
+        });
+      });
+
+      // Animación de estrellas en testimonios
+      document.querySelectorAll(".testimonial-stars").forEach((stars) => {
+        stars.addEventListener("mouseenter", function () {
+          const starArray = this.textContent.split("");
+          this.textContent = "";
+
+          starArray.forEach((star, index) => {
+            const span = document.createElement("span");
+            span.textContent = star;
+            span.style.display = "inline-block";
+            span.style.animation = `bounce 0.5s ease ${index * 0.1}s`;
+            this.appendChild(span);
+          });
+        });
+      });
+
+      // Efecto de partículas en el hero
+      function createParticle() {
+        const hero = document.querySelector(".hero");
+        if (!hero) return;
+
+        const particle = document.createElement("div");
+        particle.style.position = "absolute";
+        particle.style.width = "2px";
+        particle.style.height = "2px";
+        particle.style.background = "rgba(212, 175, 55, 0.5)";
+        particle.style.borderRadius = "50%";
+        particle.style.left = Math.random() * 100 + "%";
+        particle.style.top = "100%";
+        particle.style.pointerEvents = "none";
+        particle.style.zIndex = "1";
+
+        hero.appendChild(particle);
+
+        const duration = 3000 + Math.random() * 2000;
+        const animation = particle.animate(
+          [
+            { transform: "translateY(0)", opacity: 1 },
+            { transform: `translateY(-${window.innerHeight}px)`, opacity: 0 },
+          ],
+          {
+            duration: duration,
+            easing: "linear",
+          }
+        );
+
+        animation.onfinish = () => particle.remove();
+      }
+
+      // Crear partículas periódicamente
+      setInterval(createParticle, 300);
+
+      // Animación inicial de carga
+      document.addEventListener("DOMContentLoaded", function () {
+        document.body.style.opacity = "0";
+        setTimeout(() => {
+          document.body.style.transition = "opacity 0.5s ease";
+          document.body.style.opacity = "1";
+        }, 100);
+      });
+
+      // Hacer que el logo también funcione como scroll to top
+      document.querySelector(".logo").addEventListener("click", function () {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      });
+
+      // Mostrar productos de forma inicial (todos)
+      //window.addEventListener("load", function () {
+      //  filterProducts("todos");
+      //});
+    </script>
+  </body>
+</html>
+{ transform: translateY(-12px); border-color: #D4AF37; box-shadow: 0 15px 40px
+rgba(212, 175, 55, 0.2); } .testimonial-card:hover
